@@ -1,19 +1,14 @@
 # kw_cache
 
-Cache content across the KWCMS.
+Cache content across the KWCMS. Use storage interfaces or directly volume. Contains a simple support
+for semaphores as remote flags for cache re-generating.
 
 ## PHP Installation
 
 ```
 {
     "require": {
-        "alex-kalanis/kw_cache": "dev-master"
-    },
-    "repositories": [
-        {
-            "type": "http",
-            "url":  "https://github.com/alex-kalanis/kw_cache.git"
-        }
+        "alex-kalanis/kw_cache": "1.0"
     }
 }
 ```
@@ -28,6 +23,6 @@ familiar with composer)
 
 2.) Set storage(s) which will be used by cache.
 
-3.) Connect the "kalanis\kw_cache\Cache" into your app. Extends it for setting your case.
+3.) Connect the "kalanis\kw_cache\*" into your app. Extends it for setting your case.
 
 4.) Just call it
