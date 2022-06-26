@@ -37,8 +37,8 @@ class Basic implements ICache
 
     /**
      * @param string $content
-     * @return bool
      * @throws StorageException
+     * @return bool
      */
     public function set(string $content): bool
     {
@@ -46,8 +46,8 @@ class Basic implements ICache
     }
 
     /**
-     * @return string
      * @throws StorageException
+     * @return string
      */
     public function get(): string
     {

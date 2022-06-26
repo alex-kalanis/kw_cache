@@ -135,8 +135,8 @@ class MockKillingStorage implements IStorage
 
     /**
      * @param string $key
-     * @return bool
      * @throws SemaphoreException
+     * @return bool
      */
     public function exists(string $key): bool
     {
