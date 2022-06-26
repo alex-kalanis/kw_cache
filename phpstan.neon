@@ -1,0 +1,17 @@
+parameters:
+	level: 9
+	paths:
+		- 'php-src'
+	scanFiles:
+		- 'php-tests/CommonTestClass.php'
+	excludePaths:
+		- 'php-tests/_autoload.php'
+		- 'php-tests/_bootstrap.php'
+		- 'php-tests/CommonTestClass.php'
+	bootstrapFiles:
+		- 'php-tests/_bootstrap.php'
+	ignoreErrors:
+		-
+			message: '#expects resource, resource\|null given\.#'
+			path: 'php-src/Simple/Memory.php'
+			# quality WTF - already covered in that "exists" check
