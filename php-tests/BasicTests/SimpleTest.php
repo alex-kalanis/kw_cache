@@ -4,13 +4,13 @@ namespace BasicTests;
 
 
 use kalanis\kw_cache\Simple;
-use kalanis\kw_storage\StorageException;
+use kalanis\kw_cache\CacheException;
 
 
 class SimpleTest extends \CommonTestClass
 {
     /**
-     * @throws StorageException
+     * @throws CacheException
      */
     public function testVariable(): void
     {
@@ -27,7 +27,7 @@ class SimpleTest extends \CommonTestClass
     }
 
     /**
-     * @throws StorageException
+     * @throws CacheException
      */
     public function testMemory(): void
     {

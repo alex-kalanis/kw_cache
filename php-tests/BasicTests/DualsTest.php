@@ -15,7 +15,7 @@ class DualsTest extends \CommonTestClass
     public function testDualStorageBasic(): void
     {
         Storage\Key\DirKey::setDir(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'data' . DIRECTORY_SEPARATOR);
-        $storage = new Storage\Factory(new Storage\Target\Factory(), new Storage\Format\Factory(), new Storage\Key\Factory());
+        $storage = new Storage\Factory(new Storage\Key\Factory(), new Storage\Target\Factory());
 
         // one target
         $lib = new XDual1($storage->getStorage(new \MockStorage()));

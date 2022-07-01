@@ -4,20 +4,20 @@ namespace StorageTests;
 
 
 use kalanis\kw_cache\Cache;
+use kalanis\kw_cache\CacheException;
 use kalanis\kw_cache\Interfaces\ICache;
 use kalanis\kw_cache\Simple;
 use kalanis\kw_semaphore\Semaphore;
 use kalanis\kw_semaphore\SemaphoreException;
 use kalanis\kw_storage\Interfaces\IStorage;
-use kalanis\kw_storage\StorageException;
 use kalanis\kw_storage\Storage as XStorage;
 
 
 class CacheTest extends \CommonTestClass
 {
     /**
+     * @throws CacheException
      * @throws SemaphoreException
-     * @throws StorageException
      */
     public function testSemaphore(): void
     {
@@ -40,7 +40,7 @@ class CacheTest extends \CommonTestClass
     }
 
     /**
-     * @throws StorageException
+     * @throws CacheException
      */
     public function testSemaphoreNotSet(): void
     {
@@ -55,7 +55,7 @@ class CacheTest extends \CommonTestClass
     }
 
     /**
-     * @throws StorageException
+     * @throws CacheException
      */
     public function testSemaphoreFailExists(): void
     {
@@ -64,13 +64,13 @@ class CacheTest extends \CommonTestClass
         $lib = new Cache\Semaphore($storage, $semaphore);
 
         $storage->set(static::TESTING_CONTENT);
-        $this->expectException(StorageException::class);
+        $this->expectException(CacheException::class);
         $lib->exists();
     }
 
     /**
+     * @throws CacheException
      * @throws SemaphoreException
-     * @throws StorageException
      */
     public function testSemaphoreFailSet(): void
     {
@@ -84,12 +84,12 @@ class CacheTest extends \CommonTestClass
         // semaphore action
         $semaphore->want();
         $semaphore->setStorage($this->getStorage(new \MockKillingStorage()));
-        $this->expectException(StorageException::class);
+        $this->expectException(CacheException::class);
         $lib->set(static::TESTING_CONTENT . static::TESTING_CONTENT);
     }
 
     /**
-     * @throws StorageException
+     * @throws CacheException
      */
     public function testDual(): void
     {
@@ -112,7 +112,7 @@ class CacheTest extends \CommonTestClass
     }
 
     /**
-     * @throws StorageException
+     * @throws CacheException
      */
     public function testDualNotSet(): void
     {
@@ -126,19 +126,19 @@ class CacheTest extends \CommonTestClass
     }
 
     /**
-     * @throws StorageException
+     * @throws CacheException
      */
     public function testDualFailSet(): void
     {
         $lib = new Cache\Dual(new Simple\Variable(), new MockCacheKill());
-        $this->expectException(StorageException::class);
+        $this->expectException(CacheException::class);
         $lib->set(static::TESTING_CONTENT . static::TESTING_CONTENT);
     }
 
     protected function getStorage(IStorage $mockStorage): XStorage\Storage
     {
         XStorage\Key\DirKey::setDir(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'data' . DIRECTORY_SEPARATOR);
-        $storage = new XStorage\Factory(new XStorage\Target\Factory(), new XStorage\Format\Factory(), new XStorage\Key\Factory());
+        $storage = new XStorage\Factory(new XStorage\Key\Factory(), new XStorage\Target\Factory());
         return $storage->getStorage($mockStorage);
     }
 }
@@ -211,6 +211,6 @@ class MockCacheKill implements ICache
 
     public function clear(): void
     {
-        throw new StorageException('mock test');
+        throw new CacheException('mock test');
     }
 }

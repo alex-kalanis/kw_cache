@@ -3,7 +3,7 @@
 namespace kalanis\kw_cache\Interfaces;
 
 
-use kalanis\kw_storage\StorageException;
+use kalanis\kw_cache\CacheException;
 
 
 /**
@@ -18,31 +18,31 @@ interface ICache
 
     /**
      * @param string $what
-     * @throws StorageException
+     * @throws CacheException
      */
     public function init(string $what): void;
 
     /**
-     * @throws StorageException
+     * @throws CacheException
      * @return bool
      */
     public function exists(): bool;
 
     /**
      * @param string $content
-     * @throws StorageException
+     * @throws CacheException
      * @return bool
      */
     public function set(string $content): bool;
 
     /**
-     * @throws StorageException
+     * @throws CacheException
      * @return string
      */
     public function get(): string;
 
     /**
-     * @throws StorageException
+     * @throws CacheException
      */
     public function clear(): void;
 }
