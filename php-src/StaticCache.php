@@ -3,7 +3,7 @@
 namespace kalanis\kw_cache;
 
 
-use kalanis\kw_cache\Cache\Format;
+use kalanis\kw_cache\Cache\Formatted;
 use kalanis\kw_cache\Interfaces\ICache;
 
 
@@ -15,11 +15,11 @@ use kalanis\kw_cache\Interfaces\ICache;
  */
 class StaticCache
 {
-    /** @var ICache|Format|null */
+    /** @var ICache|Formatted|null */
     protected static $cache = null;
 
     /**
-     * @param Format|ICache|null $cache
+     * @param Formatted|ICache|null $cache
      */
     public static function setCache($cache = null): void
     {
@@ -27,7 +27,7 @@ class StaticCache
     }
 
     /**
-     * @return Format|ICache|null
+     * @return Formatted|ICache|null
      */
     public static function getCache()
     {
@@ -42,7 +42,7 @@ class StaticCache
     public static function init(string $what): void
     {
         static::checkCache();
-        static::$cache->init($what);
+        static::$cache->/** @scrutinizer ignore-call */init($what);
     }
 
     /**
@@ -50,10 +50,10 @@ class StaticCache
      * @return boolean
      * @throws CacheException
      */
-    public static function exist(): bool
+    public static function exists(): bool
     {
         static::checkCache();
-        return static::$cache->exists();
+        return static::$cache->/** @scrutinizer ignore-call */exists();
     }
 
     /**
@@ -65,7 +65,7 @@ class StaticCache
     public static function set($content): bool
     {
         static::checkCache();
-        return static::$cache->set($content);
+        return static::$cache->/** @scrutinizer ignore-call */set($content);
     }
 
     /**
@@ -76,7 +76,7 @@ class StaticCache
     public static function get()
     {
         static::checkCache();
-        return static::$cache->get();
+        return static::$cache->/** @scrutinizer ignore-call */get();
     }
 
     /**
@@ -86,7 +86,7 @@ class StaticCache
     public static function clear(): void
     {
         static::checkCache();
-        static::$cache->clear();
+        static::$cache->/** @scrutinizer ignore-call */clear();
     }
 
     /**

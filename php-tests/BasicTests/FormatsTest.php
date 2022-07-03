@@ -6,7 +6,7 @@ namespace BasicTests;
 use CommonTestClass;
 use kalanis\kw_cache\CacheException;
 use kalanis\kw_cache\Format;
-use kalanis\kw_cache\Storage;
+use kalanis\kw_cache\Simple\Variable;
 
 
 class FormatsTest extends CommonTestClass
@@ -17,7 +17,7 @@ class FormatsTest extends CommonTestClass
     public function testInit(): void
     {
         $factory = new Format\Factory();
-        $this->assertInstanceOf('\kalanis\kw_storage\Storage\Format\Format', $factory->getFormat(new Storage\Basic()));
+        $this->assertInstanceOf('\kalanis\kw_cache\Format\Format', $factory->getFormat(new Variable()));
     }
 
     /**

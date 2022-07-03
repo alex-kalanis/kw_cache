@@ -179,3 +179,31 @@ class MockKillingStorage implements IStorage
         throw new StorageException('mock fail');
     }
 }
+
+
+class MockKillingStorage2 extends MockKillingStorage
+{
+    public function exists(string $key): bool
+    {
+        return true;
+    }
+}
+
+
+class MockSemaphore implements \kalanis\kw_semaphore\Interfaces\ISemaphore
+{
+    public function want(): bool
+    {
+        return false;
+    }
+
+    public function has(): bool
+    {
+        return false;
+    }
+
+    public function remove(): bool
+    {
+        return true;
+    }
+}

@@ -16,7 +16,7 @@ for semaphores as remote flags for cache re-generating.
 ```
 {
     "require": {
-        "alex-kalanis/kw_cache": "1.0"
+        "alex-kalanis/kw_cache": "2.0"
     }
 }
 ```

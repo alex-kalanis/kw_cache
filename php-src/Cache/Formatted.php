@@ -8,11 +8,11 @@ use kalanis\kw_cache\Interfaces;
 
 
 /**
- * Class Transform
+ * Class Formatted
  * @package kalanis\kw_cache\Cache
  * Caching content in any cache - another cache as semaphore for detection
  */
-class Format
+class Formatted
 {
     /** @var Interfaces\ICache */
     protected $cache = null;
@@ -50,7 +50,7 @@ class Format
      */
     public function set($content): bool
     {
-        return $this->cache->set($this->format->pack($content));
+        return $this->cache->set(strval($this->format->pack($content)));
     }
 
     /**
@@ -59,7 +59,7 @@ class Format
      */
     public function get()
     {
-        return $this->exists() ? $this->format->unpack($this->cache->get()) : '' ;
+        return $this->exists() ? $this->format->unpack($this->cache->get()) : null;
     }
 
     /**
