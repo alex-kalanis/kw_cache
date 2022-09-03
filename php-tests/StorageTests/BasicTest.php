@@ -29,6 +29,17 @@ class BasicTest extends AStorageTest
     /**
      * @throws CacheException
      */
+    public function testNotExists(): void
+    {
+        $lib = new Storage\Basic($this->getStorage(new \MockKillingStorage3()));
+        $lib->init('');
+        $this->expectException(CacheException::class);
+        $lib->exists();
+    }
+
+    /**
+     * @throws CacheException
+     */
     public function testNotSet(): void
     {
         $lib = new Storage\Basic($this->getStorage(new \MockKillingStorage2()));

@@ -7,7 +7,7 @@ use kalanis\kw_cache\CacheException;
 use kalanis\kw_cache\Storage;
 use kalanis\kw_semaphore\Semaphore;
 use kalanis\kw_semaphore\SemaphoreException;
-use kalanis\kw_storage\Storage as XStorage;
+use kalanis\kw_storage\Interfaces\IStorage;
 
 
 class SemaphoreTest extends AStorageTest
@@ -126,7 +126,7 @@ class SemaphoreTest extends AStorageTest
 
 class SemaphoreStorage extends Semaphore\Storage
 {
-    public function setStorage(XStorage\Storage $storage): void
+    public function setStorage(IStorage $storage): void
     {
         $this->storage = $storage;
     }

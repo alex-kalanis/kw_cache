@@ -1,7 +1,7 @@
 <?php
 
 use kalanis\kw_semaphore\SemaphoreException;
-use kalanis\kw_storage\Interfaces\IStorage;
+use kalanis\kw_storage\Interfaces\ITarget;
 use kalanis\kw_storage\StorageException;
 use PHPUnit\Framework\TestCase;
 
@@ -16,7 +16,7 @@ class CommonTestClass extends TestCase
 }
 
 
-class MockStorage implements IStorage
+class MockStorage implements ITarget
 {
     protected $data = [];
 
@@ -77,7 +77,7 @@ class MockStorage implements IStorage
 }
 
 
-class MockFailedStorage implements IStorage
+class MockFailedStorage implements ITarget
 {
     public function check(string $key): bool
     {
@@ -126,7 +126,7 @@ class MockFailedStorage implements IStorage
 }
 
 
-class MockKillingStorage implements IStorage
+class MockKillingStorage implements ITarget
 {
     public function check(string $key): bool
     {
@@ -186,6 +186,15 @@ class MockKillingStorage2 extends MockKillingStorage
     public function exists(string $key): bool
     {
         return true;
+    }
+}
+
+
+class MockKillingStorage3 extends MockKillingStorage
+{
+    public function exists(string $key): bool
+    {
+        throw new StorageException('mock fail');
     }
 }
 

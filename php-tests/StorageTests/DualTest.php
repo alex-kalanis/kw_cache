@@ -6,7 +6,7 @@ namespace StorageTests;
 use kalanis\kw_cache\CacheException;
 use kalanis\kw_cache\Interfaces\ICache;
 use kalanis\kw_cache\Storage as CStor;
-use kalanis\kw_storage\Storage;
+use kalanis\kw_storage\Interfaces\IStorage;
 use kalanis\kw_storage\StorageException;
 
 
@@ -64,6 +64,17 @@ class DualTest extends AStorageTest
     /**
      * @throws CacheException
      */
+    public function testNotExists(): void
+    {
+        $lib = new CStor\Dual($this->getStorage(new \MockKillingStorage3()), $this->getStorage(new \MockFailedStorage()));
+        $lib->init('');
+        $this->expectException(CacheException::class);
+        $lib->exists();
+    }
+
+    /**
+     * @throws CacheException
+     */
     public function testNotGet(): void
     {
         $lib = new CStor\Dual($this->getStorage(new \MockKillingStorage2()), $this->getStorage(new \MockFailedStorage()));
@@ -98,12 +109,12 @@ class DualTest extends AStorageTest
 
 class CompareDual extends CStor\Dual
 {
-    public function getStorage(): Storage\Storage
+    public function getStorage(): IStorage
     {
         return $this->cacheStorage;
     }
 
-    public function getReload(): Storage\Storage
+    public function getReload(): IStorage
     {
         return $this->reloadStorage;
     }
