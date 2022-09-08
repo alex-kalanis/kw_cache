@@ -47,8 +47,8 @@ class StaticCache
 
     /**
      * Is cache set?
-     * @return boolean
      * @throws CacheException
+     * @return boolean
      */
     public static function exists(): bool
     {
