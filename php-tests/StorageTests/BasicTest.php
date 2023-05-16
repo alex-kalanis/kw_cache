@@ -15,7 +15,7 @@ class BasicTest extends AStorageTest
     public function testRun(): void
     {
         $lib = new Storage\Basic($this->getStorage(new \MockStorage()));
-        $lib->init('');
+        $lib->init(['']);
 
         $this->assertFalse($lib->exists());
         $this->assertEquals('', $lib->get());
@@ -32,7 +32,7 @@ class BasicTest extends AStorageTest
     public function testNotExists(): void
     {
         $lib = new Storage\Basic($this->getStorage(new \MockKillingStorage3()));
-        $lib->init('');
+        $lib->init(['']);
         $this->expectException(CacheException::class);
         $lib->exists();
     }
@@ -43,7 +43,7 @@ class BasicTest extends AStorageTest
     public function testNotSet(): void
     {
         $lib = new Storage\Basic($this->getStorage(new \MockKillingStorage2()));
-        $lib->init('');
+        $lib->init(['']);
         $this->expectException(CacheException::class);
         $lib->set('lkjhgfdsa');
     }
@@ -54,7 +54,7 @@ class BasicTest extends AStorageTest
     public function testNotGet(): void
     {
         $lib = new Storage\Basic($this->getStorage(new \MockKillingStorage2()));
-        $lib->init('');
+        $lib->init(['']);
         $this->expectException(CacheException::class);
         $lib->get();
     }
@@ -65,7 +65,7 @@ class BasicTest extends AStorageTest
     public function testNotClear(): void
     {
         $lib = new Storage\Basic($this->getStorage(new \MockKillingStorage2()));
-        $lib->init('');
+        $lib->init(['']);
         $this->expectException(CacheException::class);
         $lib->clear();
     }

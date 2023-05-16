@@ -25,7 +25,7 @@ class SemaphoreTest extends AFilesTest
         $storage = $this->getStorage(new \MockStorage());
         $semaphore = new Semaphore\Files($storage, ['dummy']);
         $lib = new Files\Semaphore($storage, $semaphore);
-        $lib->init('');
+        $lib->init(['']);
 
         $this->assertFalse($lib->exists());
         $this->assertEquals('', $lib->get());
@@ -51,7 +51,7 @@ class SemaphoreTest extends AFilesTest
         $storage = $this->getStorage(new \MockFailedStorage());
         $semaphore = new Semaphore\Files($storage, ['dummy']);
         $lib = new Files\Semaphore($storage, $semaphore);
-        $lib->init('');
+        $lib->init(['']);
 
         $this->assertFalse($lib->exists());
         $this->assertEquals('', $lib->get());
@@ -83,7 +83,7 @@ class SemaphoreTest extends AFilesTest
     {
         $storage = $this->getStorage(new \MockKillingStorage2());
         $lib = new Files\Semaphore($storage, new \MockSemaphore());
-        $lib->init('');
+        $lib->init(['']);
         $this->expectException(CacheException::class);
         $lib->set('lkjhgfdsa');
     }
@@ -97,7 +97,7 @@ class SemaphoreTest extends AFilesTest
     {
         $storage = $this->getStorage(new \MockKillingStorage2());
         $lib = new Files\Semaphore($storage, new \MockSemaphore());
-        $lib->init('');
+        $lib->init(['']);
         $this->expectException(CacheException::class);
         $lib->get();
     }
@@ -111,7 +111,7 @@ class SemaphoreTest extends AFilesTest
     {
         $storage = $this->getStorage(new \MockKillingStorage2());
         $lib = new Files\Semaphore($storage, new \MockSemaphore());
-        $lib->init('');
+        $lib->init(['']);
         $this->expectException(CacheException::class);
         $lib->clear();
     }

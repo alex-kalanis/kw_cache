@@ -17,7 +17,7 @@ class FormatsTest extends CommonTestClass
     public function testInit(): void
     {
         $factory = new Format\Factory();
-        $this->assertInstanceOf('\kalanis\kw_cache\Format\Format', $factory->getFormat(new Variable()));
+        $this->assertInstanceOf(Format\Format::class, $factory->getFormat(new Variable()));
     }
 
     /**

@@ -24,7 +24,7 @@ class Dual implements ICache
         $this->reloadCache = $reloadCache ?: $storageCache;
     }
 
-    public function init(string $what): void
+    public function init(array $what): void
     {
         $this->storageCache->init($what);
         $this->reloadCache->init($what);

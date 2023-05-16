@@ -19,7 +19,7 @@ class BasicTest extends AFilesTest
     public function testRun(): void
     {
         $lib = new Files\Basic($this->getStorage(new \MockStorage()));
-        $lib->init('');
+        $lib->init(['']);
 
         $this->assertFalse($lib->exists());
         $this->assertEquals('', $lib->get());
@@ -38,7 +38,7 @@ class BasicTest extends AFilesTest
     public function testNotExists(): void
     {
         $lib = new Files\Basic($this->getStorage(new \MockKillingStorage4()));
-        $lib->init('');
+        $lib->init(['']);
         $this->expectException(CacheException::class);
         $lib->exists();
     }
@@ -51,7 +51,7 @@ class BasicTest extends AFilesTest
     public function testNotSet(): void
     {
         $lib = new Files\Basic($this->getStorage(new \MockKillingStorage2()));
-        $lib->init('');
+        $lib->init(['']);
         $this->expectException(CacheException::class);
         $lib->set('lkjhgfdsa');
     }
@@ -64,7 +64,7 @@ class BasicTest extends AFilesTest
     public function testNotGet(): void
     {
         $lib = new Files\Basic($this->getStorage(new \MockKillingStorage2()));
-        $lib->init('');
+        $lib->init(['']);
         $this->expectException(CacheException::class);
         $lib->get();
     }
@@ -77,7 +77,7 @@ class BasicTest extends AFilesTest
     public function testNotClear(): void
     {
         $lib = new Files\Basic($this->getStorage(new \MockKillingStorage2()));
-        $lib->init('');
+        $lib->init(['']);
         $this->expectException(CacheException::class);
         $lib->clear();
     }

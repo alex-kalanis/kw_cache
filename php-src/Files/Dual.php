@@ -37,25 +37,18 @@ class Dual implements ICache
         $this->reloadLib = $reloadLib ?? $cacheLib;
     }
 
-    public function init(string $what): void
+    public function init(array $what): void
     {
-        try {
-            $arr = new ArrayPath();
-            $arr->setString($what);
-            $this->cachePath = array_merge(
-                $arr->getArrayDirectory(),
-                [$arr->getFileName() . ICache::EXT_CACHE]
-            );;
-            $this->reloadPath = array_merge(
-                $arr->getArrayDirectory(),
-                [$arr->getFileName() . ICache::EXT_RELOAD]
-            );
-            // @codeCoverageIgnoreStart
-        } catch (PathsException $ex) {
-            // just when it has problems with separating the path
-            throw new CacheException($ex->getMessage(), $ex->getCode(), $ex);
-        }
-        // @codeCoverageIgnoreEnd
+        $arr = new ArrayPath();
+        $arr->setArray($what);
+        $this->cachePath = array_merge(
+            $arr->getArrayDirectory(),
+            [$arr->getFileName() . ICache::EXT_CACHE]
+        );;
+        $this->reloadPath = array_merge(
+            $arr->getArrayDirectory(),
+            [$arr->getFileName() . ICache::EXT_RELOAD]
+        );
     }
 
     public function exists(): bool

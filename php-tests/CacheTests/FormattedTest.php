@@ -17,7 +17,7 @@ class FormattedTest extends ACacheTest
     public function testRun(): void
     {
         $lib = new Formatted(new Simple\Variable(), new Raw());
-        $lib->init('');
+        $lib->init(['']);
 
         $this->assertFalse($lib->exists());
         $this->assertEquals('', $lib->get());

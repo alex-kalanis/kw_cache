@@ -15,7 +15,7 @@ class SimpleTest extends \CommonTestClass
     public function testVariable(): void
     {
         $lib = new Simple\Variable();
-        $lib->init('');
+        $lib->init(['']);
 
         $this->assertFalse($lib->exists());
         $this->assertEquals('', $lib->get());
@@ -32,7 +32,7 @@ class SimpleTest extends \CommonTestClass
     public function testMemory(): void
     {
         $lib = new Simple\Memory();
-        $lib->init('');
+        $lib->init(['']);
 
         $this->assertFalse($lib->exists());
         $this->assertEquals('', $lib->get());

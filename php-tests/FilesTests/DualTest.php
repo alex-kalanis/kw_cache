@@ -24,7 +24,7 @@ class DualTest extends AFilesTest
     {
         $storage = $this->getStorage(new \MockStorage());
         $lib = new CStor\Dual($storage, $storage);
-        $lib->init('');
+        $lib->init(['']);
 
         $this->assertFalse($lib->exists());
         $this->assertEquals('', $lib->get());
@@ -48,7 +48,7 @@ class DualTest extends AFilesTest
     public function testNotSet(): void
     {
         $lib = new CStor\Dual($this->getStorage(new \MockFailedStorage()));
-        $lib->init('');
+        $lib->init(['']);
 
         $this->assertFalse($lib->exists());
         $this->assertEquals('', $lib->get());
@@ -64,7 +64,7 @@ class DualTest extends AFilesTest
     public function testCannotSet(): void
     {
         $lib = new CStor\Dual($this->getStorage(new \MockKillingStorage2()));
-        $lib->init('');
+        $lib->init(['']);
         $this->expectException(CacheException::class);
         $lib->set('lkjhgfdsa');
     }
@@ -77,7 +77,7 @@ class DualTest extends AFilesTest
     public function testNotExists(): void
     {
         $lib = new CStor\Dual($this->getStorage(new \MockKillingStorage4()), $this->getStorage(new \MockFailedStorage()));
-        $lib->init('');
+        $lib->init(['']);
         $this->expectException(CacheException::class);
         $lib->exists();
     }
@@ -90,7 +90,7 @@ class DualTest extends AFilesTest
     public function testNotGet(): void
     {
         $lib = new CStor\Dual($this->getStorage(new \MockKillingStorage2()), $this->getStorage(new \MockFailedStorage()));
-        $lib->init('');
+        $lib->init(['']);
         $this->expectException(CacheException::class);
         $lib->get();
     }
@@ -103,7 +103,7 @@ class DualTest extends AFilesTest
     public function testNotClear(): void
     {
         $lib = new CStor\Dual($this->getStorage(new \MockKillingStorage2()));
-        $lib->init('');
+        $lib->init(['']);
         $this->expectException(CacheException::class);
         $lib->clear();
     }

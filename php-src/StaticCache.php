@@ -40,10 +40,10 @@ class StaticCache
 
     /**
      * Init cache
-     * @param string $what
+     * @param string[] $what
      * @throws CacheException
      */
-    public static function init(string $what): void
+    public static function init(array $what): void
     {
         static::getCache()->init($what);
     }

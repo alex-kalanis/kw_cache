@@ -21,7 +21,7 @@ class SemaphoreTest extends ACacheTest
     {
         $semaphore = new Semaphore\Storage($this->getStorage(new \MockStorage()), 'dummy');
         $lib = new Cache\Semaphore(new Simple\Variable(), $semaphore);
-        $lib->init('');
+        $lib->init(['']);
 
         $this->assertFalse($lib->exists());
         $this->assertEquals('', $lib->get());
@@ -44,7 +44,7 @@ class SemaphoreTest extends ACacheTest
     {
         $semaphore = new Semaphore\Storage($this->getStorage(new \MockFailedStorage()), 'dummy');
         $lib = new Cache\Semaphore(new MockCacheFail(), $semaphore);
-        $lib->init('');
+        $lib->init(['']);
 
         $this->assertFalse($lib->exists());
         $this->assertEquals('', $lib->get());

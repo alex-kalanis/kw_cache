@@ -23,7 +23,7 @@ abstract class ACacheTest extends \CommonTestClass
 
 class MockCacheFail implements ICache
 {
-    public function init(string $what): void
+    public function init(array $what): void
     {
     }
 
@@ -50,7 +50,7 @@ class MockCacheFail implements ICache
 
 class MockCacheKill implements ICache
 {
-    public function init(string $what): void
+    public function init(array $what): void
     {
     }
 

@@ -18,7 +18,7 @@ class DualTest extends ACacheTest
     {
         $storage = new Simple\Variable();
         $lib = new Cache\Dual(new Simple\Variable(), $storage);
-        $lib->init('');
+        $lib->init(['']);
 
         $this->assertFalse($lib->exists());
         $this->assertEquals('', $lib->get());
@@ -40,7 +40,7 @@ class DualTest extends ACacheTest
     public function testNotSet(): void
     {
         $lib = new CacheDual(new MockCacheFail());
-        $lib->init('');
+        $lib->init(['']);
 
         $this->assertFalse($lib->exists());
         $this->assertEquals('', $lib->get());

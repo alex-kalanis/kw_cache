@@ -17,7 +17,7 @@ class StaticTest extends \CommonTestClass
     {
         StaticCache::setCache(new Simple\Memory());
         $this->assertNotEmpty(StaticCache::getCache());
-        StaticCache::init('');
+        StaticCache::init(['']);
 
         $this->assertFalse(StaticCache::exists());
         $this->assertEquals('', StaticCache::get());
