@@ -49,6 +49,7 @@
             <directory>php-tests/BasicTests</directory>
             <directory>php-tests/CacheTests</directory>
             <directory>php-tests/StorageTests</directory>
+            <directory>php-tests/FilesTests</directory>
         </testsuite>
     </testsuites>
 </phpunit>

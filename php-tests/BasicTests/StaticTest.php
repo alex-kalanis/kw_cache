@@ -36,8 +36,7 @@ class StaticTest extends \CommonTestClass
     public function testFailExists(): void
     {
         StaticCache::setCache(null);
-        $this->assertEmpty(StaticCache::getCache());
         $this->expectException(CacheException::class);
-        StaticCache::init('');
+        StaticCache::getCache();
     }
 }

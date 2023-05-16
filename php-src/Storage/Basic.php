@@ -43,7 +43,7 @@ class Basic implements ICache
     public function set(string $content): bool
     {
         try {
-            return $this->cacheStorage->write($this->cachePath, $content, null);
+            return $this->cacheStorage->write($this->cachePath, $content);
         } catch (StorageException $ex) {
             throw new CacheException($ex->getMessage(), $ex->getCode(), $ex);
         }

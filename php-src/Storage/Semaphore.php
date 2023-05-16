@@ -23,7 +23,7 @@ class Semaphore implements ICache
     /** @var ISemaphore */
     protected $reloadSemaphore = null;
     /** @var string */
-    protected $cachePath = '';
+    protected $cachePath = ICache::EXT_CACHE;
 
     public function __construct(IStorage $cacheStorage, ISemaphore $reloadSemaphore)
     {
@@ -52,7 +52,7 @@ class Semaphore implements ICache
             if (false === $result) {
                 return false;
             }
-            # remove signal to save
+            // remove signal to save
             if ($this->reloadSemaphore->has()) {
                 $this->reloadSemaphore->remove();
             }

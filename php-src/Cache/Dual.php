@@ -41,7 +41,7 @@ class Dual implements ICache
         if (false === $result) {
             return false;
         }
-        # remove signal to save
+        // remove signal to save
         if ($this->reloadCache->exists()) {
             $this->reloadCache->clear();
         }

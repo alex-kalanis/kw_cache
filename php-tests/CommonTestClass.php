@@ -199,6 +199,15 @@ class MockKillingStorage3 extends MockKillingStorage
 }
 
 
+class MockKillingStorage4 extends MockKillingStorage
+{
+    public function exists(string $key): bool
+    {
+        throw new \kalanis\kw_files\FilesException('mock fail');
+    }
+}
+
+
 class MockSemaphore implements \kalanis\kw_semaphore\Interfaces\ISemaphore
 {
     public function want(): bool
