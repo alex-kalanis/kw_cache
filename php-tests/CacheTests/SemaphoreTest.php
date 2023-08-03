@@ -9,6 +9,7 @@ use kalanis\kw_cache\Simple;
 use kalanis\kw_semaphore\Semaphore;
 use kalanis\kw_semaphore\SemaphoreException;
 use kalanis\kw_storage\Interfaces\IStorage;
+use kalanis\kw_storage\StorageException;
 
 
 class SemaphoreTest extends ACacheTest
@@ -16,6 +17,7 @@ class SemaphoreTest extends ACacheTest
     /**
      * @throws CacheException
      * @throws SemaphoreException
+     * @throws StorageException
      */
     public function testRun(): void
     {
@@ -39,6 +41,7 @@ class SemaphoreTest extends ACacheTest
 
     /**
      * @throws CacheException
+     * @throws StorageException
      */
     public function testNotSet(): void
     {
@@ -54,6 +57,7 @@ class SemaphoreTest extends ACacheTest
 
     /**
      * @throws CacheException
+     * @throws StorageException
      */
     public function testFailExists(): void
     {
@@ -69,6 +73,7 @@ class SemaphoreTest extends ACacheTest
     /**
      * @throws CacheException
      * @throws SemaphoreException
+     * @throws StorageException
      */
     public function testFailSet(): void
     {

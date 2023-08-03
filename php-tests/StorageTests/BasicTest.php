@@ -5,12 +5,14 @@ namespace StorageTests;
 
 use kalanis\kw_cache\CacheException;
 use kalanis\kw_cache\Storage;
+use kalanis\kw_storage\StorageException;
 
 
 class BasicTest extends AStorageTest
 {
     /**
      * @throws CacheException
+     * @throws StorageException
      */
     public function testRun(): void
     {
@@ -28,6 +30,7 @@ class BasicTest extends AStorageTest
 
     /**
      * @throws CacheException
+     * @throws StorageException
      */
     public function testNotExists(): void
     {
@@ -39,6 +42,7 @@ class BasicTest extends AStorageTest
 
     /**
      * @throws CacheException
+     * @throws StorageException
      */
     public function testNotSet(): void
     {
@@ -50,6 +54,7 @@ class BasicTest extends AStorageTest
 
     /**
      * @throws CacheException
+     * @throws StorageException
      */
     public function testNotGet(): void
     {
@@ -61,6 +66,7 @@ class BasicTest extends AStorageTest
 
     /**
      * @throws CacheException
+     * @throws StorageException
      */
     public function testNotClear(): void
     {

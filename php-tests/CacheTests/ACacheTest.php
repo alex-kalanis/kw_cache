@@ -8,13 +8,19 @@ use kalanis\kw_cache\Interfaces\ICache;
 use kalanis\kw_storage\Interfaces\IStorage;
 use kalanis\kw_storage\Interfaces\ITarget;
 use kalanis\kw_storage\Storage as XStorage;
+use kalanis\kw_storage\StorageException;
 
 
 abstract class ACacheTest extends \CommonTestClass
 {
+    /**
+     * @param ITarget $mockStorage
+     * @throws StorageException
+     * @return IStorage
+     */
     protected function getStorage(ITarget $mockStorage): IStorage
     {
-        XStorage\Key\DirKey::setDir(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'data' . DIRECTORY_SEPARATOR);
+        XStorage\Key\StaticPrefixKey::setPrefix(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'data' . DIRECTORY_SEPARATOR);
         $storage = new XStorage\Factory(new XStorage\Key\Factory(), new XStorage\Target\Factory());
         return $storage->getStorage($mockStorage);
     }
