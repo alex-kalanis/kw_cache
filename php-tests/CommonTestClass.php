@@ -30,9 +30,9 @@ class MockStorage implements ITarget
         return isset($this->data[$key]);
     }
 
-    public function load(string $key)
+    public function load(string $key): string
     {
-        return $this->exists($key) ? $this->data[$key] : null ;
+        return $this->exists($key) ? $this->data[$key] : '';
     }
 
     public function save(string $key, $data, ?int $timeout = null): bool
@@ -89,9 +89,9 @@ class MockFailedStorage implements ITarget
         return false;
     }
 
-    public function load(string $key)
+    public function load(string $key): string
     {
-        return null;
+        return '';
     }
 
     public function save(string $key, $data, ?int $timeout = null): bool
@@ -144,7 +144,7 @@ class MockKillingStorage implements ITarget
         throw new SemaphoreException('mock fail');
     }
 
-    public function load(string $key)
+    public function load(string $key): string
     {
         throw new StorageException('mock fail');
     }

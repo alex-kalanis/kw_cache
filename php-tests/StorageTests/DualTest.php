@@ -38,6 +38,7 @@ class DualTest extends AStorageTest
 
     /**
      * @throws CacheException
+     * @throws StorageException
      */
     public function testNotSet(): void
     {
@@ -52,6 +53,7 @@ class DualTest extends AStorageTest
 
     /**
      * @throws CacheException
+     * @throws StorageException
      */
     public function testCannotSet(): void
     {
@@ -63,6 +65,7 @@ class DualTest extends AStorageTest
 
     /**
      * @throws CacheException
+     * @throws StorageException
      */
     public function testNotExists(): void
     {
@@ -74,6 +77,7 @@ class DualTest extends AStorageTest
 
     /**
      * @throws CacheException
+     * @throws StorageException
      */
     public function testNotGet(): void
     {
@@ -85,6 +89,7 @@ class DualTest extends AStorageTest
 
     /**
      * @throws CacheException
+     * @throws StorageException
      */
     public function testNotClear(): void
     {
@@ -94,6 +99,9 @@ class DualTest extends AStorageTest
         $lib->clear();
     }
 
+    /**
+     * @throws StorageException
+     */
     public function testCompare(): void
     {
         // one target

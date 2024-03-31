@@ -10,6 +10,7 @@ use kalanis\kw_files\FilesException;
 use kalanis\kw_paths\PathsException;
 use kalanis\kw_semaphore\Semaphore;
 use kalanis\kw_semaphore\SemaphoreException;
+use kalanis\kw_storage\StorageException;
 
 
 class SemaphoreTest extends AFilesTest
@@ -19,6 +20,7 @@ class SemaphoreTest extends AFilesTest
      * @throws FilesException
      * @throws PathsException
      * @throws SemaphoreException
+     * @throws StorageException
      */
     public function testRun(): void
     {
@@ -45,6 +47,7 @@ class SemaphoreTest extends AFilesTest
      * @throws CacheException
      * @throws FilesException
      * @throws PathsException
+     * @throws StorageException
      */
     public function testNotSet(): void
     {
@@ -63,6 +66,7 @@ class SemaphoreTest extends AFilesTest
      * @throws CacheException
      * @throws FilesException
      * @throws PathsException
+     * @throws StorageException
      */
     public function testFailExists(): void
     {
@@ -78,6 +82,7 @@ class SemaphoreTest extends AFilesTest
      * @throws CacheException
      * @throws FilesException
      * @throws PathsException
+     * @throws StorageException
      */
     public function testCannotSet(): void
     {
@@ -92,6 +97,7 @@ class SemaphoreTest extends AFilesTest
      * @throws CacheException
      * @throws FilesException
      * @throws PathsException
+     * @throws StorageException
      */
     public function testNotGet(): void
     {
@@ -106,6 +112,7 @@ class SemaphoreTest extends AFilesTest
      * @throws CacheException
      * @throws FilesException
      * @throws PathsException
+     * @throws StorageException
      */
     public function testNotClear(): void
     {
@@ -121,6 +128,7 @@ class SemaphoreTest extends AFilesTest
      * @throws FilesException
      * @throws PathsException
      * @throws SemaphoreException
+     * @throws StorageException
      */
     public function testFailSet(): void
     {

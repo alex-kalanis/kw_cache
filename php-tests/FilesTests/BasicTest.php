@@ -7,6 +7,7 @@ use kalanis\kw_cache\CacheException;
 use kalanis\kw_cache\Files;
 use kalanis\kw_files\FilesException;
 use kalanis\kw_paths\PathsException;
+use kalanis\kw_storage\StorageException;
 
 
 class BasicTest extends AFilesTest
@@ -15,6 +16,7 @@ class BasicTest extends AFilesTest
      * @throws CacheException
      * @throws FilesException
      * @throws PathsException
+     * @throws StorageException
      */
     public function testRun(): void
     {
@@ -34,6 +36,7 @@ class BasicTest extends AFilesTest
      * @throws CacheException
      * @throws FilesException
      * @throws PathsException
+     * @throws StorageException
      */
     public function testNotExists(): void
     {
@@ -47,6 +50,7 @@ class BasicTest extends AFilesTest
      * @throws CacheException
      * @throws FilesException
      * @throws PathsException
+     * @throws StorageException
      */
     public function testNotSet(): void
     {
@@ -60,6 +64,7 @@ class BasicTest extends AFilesTest
      * @throws CacheException
      * @throws FilesException
      * @throws PathsException
+     * @throws StorageException
      */
     public function testNotGet(): void
     {
@@ -73,6 +78,7 @@ class BasicTest extends AFilesTest
      * @throws CacheException
      * @throws FilesException
      * @throws PathsException
+     * @throws StorageException
      */
     public function testNotClear(): void
     {
